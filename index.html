@@ -53,35 +53,8 @@ body {
   overflow: hidden;
 }
 
-.decor-heart {
-  position: absolute;
-  width: 60px;
-  opacity: 0.25;
-  animation: latido 4s ease-in-out infinite;
-}
-
-.heart-1 {
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  filter: drop-shadow(0 0 6px #ffb6c1);
-}
-
-.heart-2 {
-  bottom: 60px;
-  right: 15%;
-  width: 45px;
-  filter: drop-shadow(0 0 5px #f8a6c2);
-  animation-delay: 1.5s;
-}
-
-@keyframes latido {
-  0%, 100% { transform: scale(1) translateX(-50%); }
-  50% { transform: scale(1.08) translateX(-50%); }
-}
-
 .coupon-container {
-  width: 340px;
+  width: 360px; /* 💡 Un poco más ancho que antes */
   background-color: #f4f8ff;
   border: 2px solid #b4c8e9;
   border-radius: 15px;
@@ -96,7 +69,6 @@ h1 {
   font-size: 1.7rem;
   color: #3562a1;
   margin-bottom: 15px;
-  position: relative;
 }
 
 label {
@@ -107,10 +79,10 @@ label {
   text-align: left;
 }
 
-/* --- 🔧 AJUSTE NUEVO: centrado del input --- */
+/* 🔧 Input más ancho pero centrado */
 input#detalle {
   display: block;
-  width: calc(100% - 4px);
+  width: 102%; /* ligeramente más ancho */
   margin: 0 auto;
   box-sizing: border-box;
   background-color: #fff;
@@ -120,7 +92,19 @@ input#detalle {
   font-size: 1rem;
 }
 
-/* ⭐ Estrellas */
+/* También el select */
+select {
+  display: block;
+  width: 102%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #aac0e3;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
 .stars {
   display: flex;
   justify-content: center;
@@ -161,12 +145,12 @@ button:hover {
   box-shadow: 0 3px 8px rgba(93, 133, 199, 0.3);
 }
 
-/* --- 🔧 AJUSTE NUEVO: centrado del historial --- */
+/* 🔧 Historial un poco más ancho */
 .history {
   background-color: #ffffff;
   border: 2px solid #c3d5ef;
   border-radius: 12px;
-  width: calc(100% - 4px);
+  width: 102%;
   margin: 25px auto 0 auto;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(120, 150, 200, 0.15);
@@ -214,64 +198,24 @@ button:hover {
 
 /* 📱 Responsive */
 @media (max-width: 480px) {
-  body {
-    padding: 10px;
+  .coupon-container {
+    width: 92%;
+    padding: 18px;
   }
 
-  .coupon-container {
-    width: 90%;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 10px;
+  input#detalle,
+  select,
+  .history {
+    width: 104%;
   }
 
   h1 {
     font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-
-  label {
-    margin-top: 8px;
-    font-size: 0.9rem;
-  }
-
-  select, input {
-    padding: 8px;
-    margin-top: 5px;
-    font-size: 0.9rem;
-  }
-
-  /* 🔧 Mantener centrado en móvil también */
-  input#detalle {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .stars {
-    margin-top: 8px;
-    gap: 4px;
-  }
-
-  .star {
-    font-size: 22px;
   }
 
   button {
-    margin-top: 15px;
     padding: 10px;
     font-size: 0.9rem;
-  }
-
-  .history {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 12px;
-    max-height: 200px;
-  }
-
-  .history h2 {
-    font-size: 1rem;
   }
 }
 </style>
