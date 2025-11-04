@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cupón Screen Night</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -37,8 +36,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
-
 <style>
 body {
   font-family: 'Poppins', 'Arial', sans-serif;
@@ -49,28 +46,27 @@ body {
   min-height: 100vh;
   margin: 0;
   color: #355c8b;
-  position: relative;
-  overflow: hidden;
 }
 
+/* Contenedor principal */
 .coupon-container {
-  width: 360px; /* 💡 Un poco más ancho que antes */
+  width: 360px; /* un poco más ancho */
   background-color: #f4f8ff;
   border: 2px solid #b4c8e9;
   border-radius: 15px;
   padding: 25px;
   box-shadow: 0 6px 10px rgba(140, 169, 210, 0.2);
   text-align: center;
-  z-index: 2;
-  position: relative;
 }
 
+/* Título */
 h1 {
   font-size: 1.7rem;
   color: #3562a1;
   margin-bottom: 15px;
 }
 
+/* Etiquetas */
 label {
   display: block;
   margin-top: 10px;
@@ -79,23 +75,31 @@ label {
   text-align: left;
 }
 
-/* 🔧 Input más ancho pero centrado */
-input#detalle {
-  display: block;
-  width: 102%; /* ligeramente más ancho */
-  margin: 0 auto;
-  box-sizing: border-box;
-  background-color: #fff;
-  border: 1px solid #aac0e3;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 1rem;
-}
-
-/* También el select */
+/* 🔧 Restauramos el SELECT al estilo original y centrado */
 select {
   display: block;
-  width: 102%;
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #aac0e3;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: box-shadow 0.2s ease;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(53, 98, 161, 0.4);
+}
+
+/* Input */
+input#detalle {
+  display: block;
+  width: 102%; /* un poquito más ancho */
   margin: 0 auto;
   box-sizing: border-box;
   background-color: #fff;
@@ -105,6 +109,7 @@ select {
   font-size: 1rem;
 }
 
+/* Estrellas */
 .stars {
   display: flex;
   justify-content: center;
@@ -126,6 +131,7 @@ select {
   text-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
 }
 
+/* Botón */
 button {
   margin-top: 20px;
   width: 100%;
@@ -145,12 +151,12 @@ button:hover {
   box-shadow: 0 3px 8px rgba(93, 133, 199, 0.3);
 }
 
-/* 🔧 Historial un poco más ancho */
+/* Historial */
 .history {
   background-color: #ffffff;
   border: 2px solid #c3d5ef;
   border-radius: 12px;
-  width: 102%;
+  width: 102%; /* un poquito más ancho */
   margin: 25px auto 0 auto;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(120, 150, 200, 0.15);
@@ -192,11 +198,7 @@ button:hover {
   font-style: italic;
 }
 
-.coupon-container.glow {
-  box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
-}
-
-/* 📱 Responsive */
+/* Responsive */
 @media (max-width: 480px) {
   .coupon-container {
     width: 92%;
@@ -204,7 +206,6 @@ button:hover {
   }
 
   input#detalle,
-  select,
   .history {
     width: 104%;
   }
