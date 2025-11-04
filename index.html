@@ -4,257 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cupón Screen Night</title>
-
-  <style>
-    body {
-      font-family: 'Poppins', 'Arial', sans-serif;
-      background-color: #e6efff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      color: #355c8b;
-      position: relative;
-      overflow-x: hidden;
-      padding: 20px;
-    }
-
-    /* 🌸 Corazones decorativos */
-    .decor-heart {
-      position: absolute;
-      width: 60px;
-      opacity: 0.25;
-      animation: latido 4s ease-in-out infinite;
-      z-index: 1;
-    }
-
-    .heart-1 {
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      filter: drop-shadow(0 0 6px #ffb6c1);
-    }
-
-    .heart-2 {
-      bottom: 40px;
-      right: 15%;
-      width: 45px;
-      filter: drop-shadow(0 0 5px #f8a6c2);
-      animation-delay: 1.5s;
-    }
-
-    @keyframes latido {
-      0%, 100% { transform: scale(1) translateX(-50%); }
-      50% { transform: scale(1.08) translateX(-50%); }
-    }
-
-    .coupon-container {
-      width: 100%;
-      max-width: 360px;
-      background-color: #f4f8ff;
-      border: 2px solid #b4c8e9;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 6px 10px rgba(140, 169, 210, 0.2);
-      text-align: center;
-      z-index: 2;
-      position: relative;
-      box-sizing: border-box;
-    }
-
-    h1 {
-      font-size: 1.8rem;
-      color: #3562a1;
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      color: #2e4f8c;
-      font-weight: 500;
-      text-align: left;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    select, input {
-      width: 90%;
-      padding: 10px;
-      margin-top: 6px;
-      border: 1px solid #aac0e3;
-      border-radius: 8px;
-      font-size: 1rem;
-      background-color: #fff;
-      transition: box-shadow 0.2s ease;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      box-sizing: border-box;
-    }
-
-    select:focus, input:focus {
-      outline: none;
-      box-shadow: 0 0 5px rgba(53, 98, 161, 0.4);
-    }
-
-    /* ⭐ Estrellas */
-    .stars {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-      gap: 6px;
-    }
-
-    .star {
-      font-size: 26px;
-      color: #c6d6f2;
-      cursor: pointer;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-
-    .star:hover,
-    .star.selected {
-      color: #ffd86b;
-      transform: scale(1.2);
-      text-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
-    }
-
-    button {
-      margin-top: 20px;
-      width: 90%;
-      padding: 12px;
-      background-color: #7fa8e0;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.25s ease;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    button:hover {
-      background-color: #5d85c7;
-      box-shadow: 0 3px 8px rgba(93, 133, 199, 0.3);
-    }
-
-    .history {
-      background-color: #ffffff;
-      border: 2px solid #c3d5ef;
-      border-radius: 12px;
-      width: 90%;
-      margin: 25px auto 0 auto;
-      padding: 15px;
-      box-shadow: 0 4px 8px rgba(120, 150, 200, 0.15);
-      overflow-y: auto;
-      max-height: 260px;
-      text-align: left;
-      box-sizing: border-box;
-    }
-
-    .history h2 {
-      color: #3562a1;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      text-align: center;
-    }
-
-    .history-item {
-      background-color: #eef5ff;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      border-left: 4px solid #8faee2;
-      animation: aparecer 0.6s ease;
-    }
-
-    @keyframes aparecer {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .history-item p {
-      margin: 2px 0;
-      font-size: 0.9rem;
-    }
-
-    .history-item .date {
-      font-size: 0.8rem;
-      color: #486ba1;
-      font-style: italic;
-    }
-
-    .coupon-container.glow {
-      box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
-    }
-
-    /* 📱 Responsive */
-    @media (max-width: 480px) {
-      body {
-        padding: 15px;
-        align-items: flex-start;
-      }
-
-      .coupon-container {
-        max-width: 95%;
-        padding: 18px;
-        margin: 0 auto;
-        border-radius: 12px;
-      }
-
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      label {
-        width: 95%;
-        font-size: 0.9rem;
-      }
-
-      select, input {
-        width: 95%;
-        padding: 9px;
-        font-size: 0.9rem;
-      }
-
-      button {
-        width: 95%;
-        padding: 10px;
-        font-size: 0.9rem;
-      }
-
-      .history {
-        width: 95%;
-        max-height: 220px;
-        padding: 12px;
-      }
-
-      .decor-heart {
-        width: 40px;
-      }
-
-      .heart-1 {
-        top: 10px;
-      }
-
-      .heart-2 {
-        bottom: 20px;
-        right: 8%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Corazones decorativos -->
-  <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="heart" class="decor-heart heart-1">
-  <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="heart" class="decor-heart heart-2">
 
   <div class="coupon-container" id="couponBox">
     <h1>💗🎬 Screen Night 🎮💗</h1>
@@ -285,74 +37,314 @@
     </div>
   </div>
 
-  <script>
-    let calificacionSeleccionada = 0;
+  <script src="script.js"></script>
 
-    document.querySelectorAll('.star').forEach(star => {
-      star.addEventListener('click', function() {
-        calificacionSeleccionada = parseInt(this.getAttribute('data-value'));
-        actualizarEstrellas(calificacionSeleccionada);
-      });
-    });
+<style>
+body {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  background-color: #e6efff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: #355c8b;
+  position: relative;
+  overflow: hidden;
+}
 
-    function actualizarEstrellas(valor) {
-      document.querySelectorAll('.star').forEach(star => {
-        star.classList.toggle('selected', parseInt(star.getAttribute('data-value')) <= valor);
-      });
-    }
+.decor-heart {
+  position: absolute;
+  width: 60px;
+  opacity: 0.25;
+  animation: latido 4s ease-in-out infinite;
+}
 
-    function obtenerFecha() {
-      const date = new Date();
-      return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
-    }
+.heart-1 {
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 6px #ffb6c1);
+}
 
-    function enviar() {
-      const tipo = document.getElementById('tipo').value;
-      const detalle = document.getElementById('detalle').value;
-      const fecha = obtenerFecha();
-      const couponBox = document.getElementById('couponBox');
+.heart-2 {
+  bottom: 60px;
+  right: 15%;
+  width: 45px;
+  filter: drop-shadow(0 0 5px #f8a6c2);
+  animation-delay: 1.5s;
+}
 
-      if (detalle.trim() === '' || calificacionSeleccionada === 0) {
-        alert('💙 Por fa, completa todo antes de guardar 💙');
-        return;
-      }
+@keyframes latido {
+  0%, 100% { transform: scale(1) translateX(-50%); }
+  50% { transform: scale(1.08) translateX(-50%); }
+}
 
-      const cupon = { tipo, detalle, calificacion: calificacionSeleccionada, fecha };
-      let cupones = JSON.parse(localStorage.getItem('cupones')) || [];
-      cupones.push(cupon);
-      localStorage.setItem('cupones', JSON.stringify(cupones));
+.coupon-container {
+  width: 340px;
+  background-color: #f4f8ff;
+  border: 2px solid #b4c8e9;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 6px 10px rgba(140, 169, 210, 0.2);
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
 
-      document.getElementById('detalle').value = '';
-      calificacionSeleccionada = 0;
-      actualizarEstrellas(0);
-      mostrarHistorial();
+h1 {
+  font-size: 1.7rem;
+  color: #3562a1;
+  margin-bottom: 15px;
+  position: relative;
+}
 
-      couponBox.classList.add('glow');
-      setTimeout(() => couponBox.classList.remove('glow'), 800);
-    }
+label {
+  display: block;
+  margin-top: 10px;
+  color: #2e4f8c;
+  font-weight: 500;
+  text-align: left;
+}
 
-    function mostrarHistorial() {
-      const cupones = JSON.parse(localStorage.getItem('cupones')) || [];
-      const historyDiv = document.getElementById('history');
-      historyDiv.innerHTML = '<h2>Historial</h2>';
+/* --- 🔧 AJUSTE NUEVO: centrado del input --- */
+input#detalle {
+  display: block;
+  width: calc(100% - 4px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #aac0e3;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+}
 
-      cupones.forEach(cupon => {
-        const cuponDiv = document.createElement('div');
-        cuponDiv.classList.add('history-item');
+/* ⭐ Estrellas */
+.stars {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 6px;
+}
 
-        const estrellas = '★'.repeat(cupon.calificacion) + '☆'.repeat(5 - cupon.calificacion);
+.star {
+  font-size: 26px;
+  color: #c6d6f2;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
 
-        cuponDiv.innerHTML = `
-          <p><strong>Tipo:</strong> ${cupon.tipo}</p>
-          <p><strong>Detalle:</strong> ${cupon.detalle}</p>
-          <p><strong>Calificación:</strong> <span style="color:#ffd700">${estrellas}</span> 💗</p>
-          <p class="date">${cupon.fecha}</p>
-        `;
-        historyDiv.appendChild(cuponDiv);
-      });
-    }
+.star:hover,
+.star.selected {
+  color: #ffd86b;
+  transform: scale(1.2);
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+}
 
-    document.addEventListener('DOMContentLoaded', mostrarHistorial);
-  </script>
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #7fa8e0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background-color: #5d85c7;
+  box-shadow: 0 3px 8px rgba(93, 133, 199, 0.3);
+}
+
+/* --- 🔧 AJUSTE NUEVO: centrado del historial --- */
+.history {
+  background-color: #ffffff;
+  border: 2px solid #c3d5ef;
+  border-radius: 12px;
+  width: calc(100% - 4px);
+  margin: 25px auto 0 auto;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(120, 150, 200, 0.15);
+  overflow-y: auto;
+  max-height: 260px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.history h2 {
+  color: #3562a1;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.history-item {
+  background-color: #eef5ff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-left: 4px solid #8faee2;
+  animation: aparecer 0.6s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.history-item p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+.history-item .date {
+  font-size: 0.8rem;
+  color: #486ba1;
+  font-style: italic;
+}
+
+.coupon-container.glow {
+  box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+}
+
+/* 📱 Responsive */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .coupon-container {
+    width: 90%;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  label {
+    margin-top: 8px;
+    font-size: 0.9rem;
+  }
+
+  select, input {
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+  }
+
+  /* 🔧 Mantener centrado en móvil también */
+  input#detalle {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .stars {
+    margin-top: 8px;
+    gap: 4px;
+  }
+
+  .star {
+    font-size: 22px;
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .history {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+    max-height: 200px;
+  }
+
+  .history h2 {
+    font-size: 1rem;
+  }
+}
+</style>
+
+<script>
+let calificacionSeleccionada = 0;
+
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('click', function() {
+    calificacionSeleccionada = parseInt(this.getAttribute('data-value'));
+    actualizarEstrellas(calificacionSeleccionada);
+  });
+});
+
+function actualizarEstrellas(valor) {
+  document.querySelectorAll('.star').forEach(star => {
+    star.classList.toggle('selected', parseInt(star.getAttribute('data-value')) <= valor);
+  });
+}
+
+function obtenerFecha() {
+  const date = new Date();
+  return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
+}
+
+function enviar() {
+  const tipo = document.getElementById('tipo').value;
+  const detalle = document.getElementById('detalle').value;
+  const fecha = obtenerFecha();
+  const couponBox = document.getElementById('couponBox');
+
+  if (detalle.trim() === '' || calificacionSeleccionada === 0) {
+    alert('💙 Por fa, completa todo antes de guardar 💙');
+    return;
+  }
+
+  const cupon = { tipo, detalle, calificacion: calificacionSeleccionada, fecha };
+  let cupones = JSON.parse(localStorage.getItem('cupones')) || [];
+  cupones.push(cupon);
+  localStorage.setItem('cupones', JSON.stringify(cupones));
+
+  document.getElementById('detalle').value = '';
+  calificacionSeleccionada = 0;
+  actualizarEstrellas(0);
+  mostrarHistorial();
+
+  couponBox.classList.add('glow');
+  setTimeout(() => couponBox.classList.remove('glow'), 800);
+}
+
+function mostrarHistorial() {
+  const cupones = JSON.parse(localStorage.getItem('cupones')) || [];
+  const historyDiv = document.getElementById('history');
+  historyDiv.innerHTML = '<h2>Historial</h2>';
+
+  cupones.forEach(cupon => {
+    const cuponDiv = document.createElement('div');
+    cuponDiv.classList.add('history-item');
+
+    const estrellas = '★'.repeat(cupon.calificacion) + '☆'.repeat(5 - cupon.calificacion);
+
+    cuponDiv.innerHTML = `
+      <p><strong>Tipo:</strong> ${cupon.tipo}</p>
+      <p><strong>Detalle:</strong> ${cupon.detalle}</p>
+      <p><strong>Calificación:</strong> <span style="color:#ffd700">${estrellas}</span> 💗</p>
+      <p class="date">${cupon.fecha}</p>
+    `;
+    historyDiv.appendChild(cuponDiv);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', mostrarHistorial);
+</script>
+
 </body>
 </html>
